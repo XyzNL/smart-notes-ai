@@ -38,37 +38,35 @@
         <h3 class="text-xl font-bold mb-4">Catatan Saya</h3>
 
         <div class="space-y-4">
-            <x-card>
-                <h4>Belajar Laravel</h4>
-                <p class="text-shadow-yellow-50 mt-2">Saya sedang belajar laravel</p>
-                <div class="flex gap-2 mt-4">
-                    <x-button>
-                        Simpulkan Menggunakan AI
-                    </x-button>
-                    <x-button class="bg-emerald-600">
-                        Buat Quiz dengan AI
-                    </x-button>
-                    <x-button class="bg-red-600">
-                        Hapus
-                    </x-button>
-                </div>
-            </x-card>
+    
+            @forelse ($notes as $note)
+                <x-card>
+                    
+                    <h4>{{ $note->title }}</h4>
+                    <p class="text-shadow-yellow-50 mt-2">{{ $note->content }}</p>
+                    
+                    <div class="flex gap-2 mt-4">
+                        <x-button>
+                            Simpulkan Menggunakan AI
+                        </x-button>
+                        <x-button class="bg-emerald-600">
+                            Buat Quiz dengan AI
+                        </x-button>
+                        <x-button class="bg-red-600">
+                            Hapus
+                        </x-button>
+                    </div>
+                </x-card>
 
-            <x-card>
-                <h4>Belajar Node JS</h4>
-                <p class="text-shadow-yellow-50 mt-2">Saya sedang belajar Node JS dengan framework Next JS</p>
-                <div class="flex gap-2 mt-4">
-                    <x-button>
-                        Simpulkan Menggunakan AI
-                    </x-button>
-                    <x-button class="bg-emerald-600">
-                        Buat Quiz dengan AI
-                    </x-button>
-                    <x-button class="bg-red-600">
-                        Hapus
-                    </x-button>
-                </div>
-            </x-card>
+            @empty
+                
+                <x-card>
+                    <p class="text-center text-slate-500 py-4">
+                        Belum ada catatan. Silakan buat catatan baru di atas!
+                    </p>
+                </x-card>
+            @endforelse
+            {{-- Akhir looping --}}
         </div>
     </div>
 </div>
